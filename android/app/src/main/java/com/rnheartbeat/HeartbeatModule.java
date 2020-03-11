@@ -1,6 +1,7 @@
 package com.rnheartbeat;
 
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -25,8 +26,12 @@ public class HeartbeatModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startService() {
-        this.reactContext.startService(new Intent(this.reactContext, HeartbeartService.class));
+    public void startService(String websocketUrl) {
+        Intent service = new Intent(this.reactContext, HeartbeartService.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("websocketUrl", websocketUrl);
+        service.putExtras(bundle);
+        this.reactContext.startService(service);
     }
 
     @ReactMethod

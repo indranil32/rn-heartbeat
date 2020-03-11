@@ -38,7 +38,7 @@ const App = ({ heartBeat }) => {
         <Image source={heart} style={{ width: imageSize, height: imageSize }} resizeMode="contain" />
       </View>
       <View style={styles.view}>
-        <TouchableOpacity style={styles.button} onPress={() => Heartbeat.startService()}>
+        <TouchableOpacity style={styles.button} onPress={() => Heartbeat.startService("ws://demos.kaazing.com/echo")}>
           <Text style={styles.instructions}>Start</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => Heartbeat.stopService()}>
